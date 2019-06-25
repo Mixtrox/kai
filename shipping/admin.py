@@ -1,3 +1,7 @@
 from django.contrib import admin
+from shipping.models import ShippingRegion, Shipping, Tax, Audit
 
-# Register your models here.
+admin.site.register(ShippingRegion)
+admin.site.register(Shipping)
+admin.site.register(Tax)
+admin.site.register(Audit)

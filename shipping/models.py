@@ -7,7 +7,7 @@ class ShippingRegion (models.Model):
 class Shipping (models.Model):
     shipping_type = models.CharField(max_length=100)
     shipping_region = models.ForeignKey(
-        'shipping.Shipping_Region', on_delete='models.CASCADE', related_name='shippings')
+        'shipping.ShippingRegion', on_delete='models.CASCADE', related_name='shippings')
 
 class Tax (models.Model):
     tax = models.CharField(max_length=100)

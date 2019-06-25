@@ -1,6 +1,4 @@
 from django.db import models
-
-
 class Department (models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -16,7 +14,7 @@ class Category (models.Model):
 class ShoppingCart (models.Model):
     attributes = models.TextField()
     quantity = models.IntegerField()
-    buy_now = models.IntegerField(default=true)
+    buy_now = models.IntegerField(default=True)
     added_on = models.DateTimeField()
     product = models.ForeignKey(
         'inventory.Product', on_delete=models.CASCADE, related_name='shoppingcarts')

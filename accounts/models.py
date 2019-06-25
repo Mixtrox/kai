@@ -1,12 +1,12 @@
 from django.db import models
-from django.utils.translation. import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.base_user import AbstractBaseUser
-from djano.contrib.auth.models import PermissionMixin
+from django.contrib.auth.models import PermissionsMixin
 
 from accounts.managers import UserManager
 
 
-class Customer(AbstractBaseUser, PermissionMixin):
+class Customer(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('Email Address'), unique=True)
     first_name = models.CharField(_('First Name'), max_length=30, blank=True)
     last_name = models.CharField(_('Last Name'), max_length=30, blank=True)
@@ -16,7 +16,7 @@ class Customer(AbstractBaseUser, PermissionMixin):
         _('Address 1'), max_length=100, null=True, blank=True)
     address_2 = models.CharField(
         _('Address 2'), max_length=100, null=True, blank=True)
-    city = models.CharField(_('City'), max_length=100, null=True blank=True)
+    city = models.CharField(_('City'), max_length=100, null=True, blank=True)
     region = models.CharField(
         _('Region'), max_length=100, null=True, blank=True)
     postal_code = models.CharField(
@@ -33,7 +33,7 @@ class Customer(AbstractBaseUser, PermissionMixin):
     mob_phone = models.CharField(max_length=100, null=True, blank=True)
 
     is_activate = models.BooleanField(_('Activate'), default=True)
-    is_staff = models.BoleanField(_('Staff') default=False)
+    is_staff = models.BooleanField(_('Staff'), default=False)
 
     objects = UserManager()
 
@@ -51,5 +51,5 @@ class Customer(AbstractBaseUser, PermissionMixin):
     def get_short_name(self):
         return self.first_name
 
-    def__str__(self):
+    def __str__(self):
         return f'{self.email}'
